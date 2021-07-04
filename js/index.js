@@ -104,7 +104,7 @@ productsLeche.forEach(product => $("#dynamicTiendaLeche").append(`
             <div class="prod-title p-3">${product.title}</div>
             <div class="prod-description">    
                 <div>${product.description}</div>
-                <div class= "cart-section"><span><input class="quantity" type="number" value="1" min="1"></span><button type="button" value="${product.id}" class="btn"><img src="../images/addToCart.png"></img></button></div>
+                <div class= "cart-section"><span><input class="quantity" type="number" value="1" min="1"></span><button type="button" value="${product.id}" class="btn"><img src="images/addToCart.png"></img></button></div>
             </div>
             </div>
     </div>
