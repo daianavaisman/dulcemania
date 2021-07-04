@@ -1,12 +1,26 @@
 // INVENTARIO DE PRODUCTOS - INICIO
 
-const products = [
-    { id: 1, title:"Tremendo Choco",           price: 500, image: "images/ch1.jpg", altText: "Choco 1", description: "Centro y cobertura de pura felicidad."},
-    { id: 2, title:"Bomba de Amor",            price: 550, image: "images/ch2.jpg", altText: "Choco 2", description: "Una explosión de sabores, sabelo."},
-    { id: 3, title:"Una Fiesta",               price: 525, image: "images/ch3.jpg", altText: "Choco 3", description: "No podés creer que algo así exista!"},
-    { id: 4, title:"Festival de Sabores",      price: 500, image: "images/ch4.jpg", altText: "Choco 4", description: "Te vas a querer casar con este choco."},
-    { id: 5, title:"Esto es Fatal",            price: 550, image: "images/ch5.jpg", altText: "Choco 5", description: "Todo lo que está bien (y mal)..."},
-    { id: 6, title:"El Chocolate de tu Vida",  price: 525, image: "images/ch6.jpg", altText: "Choco 6", description: "No existe otro como este, he dicho!"}
+const productsAmargo = [
+    { id: 10, title:"Degustación Manía",        price: 550, image: "images/ch1.jpg", altText: "Choco 1", description: "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"},
+    { id: 11, title:"Manía de la Montaña",      price: 500, image: "images/ch1.jpg", altText: "Choco 2", description: "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"},
+    { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con deliciosas almendras tostadas"},
+    { id: 13, title:"Manía Pura",               price: 550, image: "images/ch1.jpg", altText: "Choco 4", description: "Increible tableta de chocolate amargo puro con 80% de cacao"}
+]
+
+const productsLeche = [
+    { id: 21, title:"Oreo Manía",               price: 500, image: "images/ch2.jpg", altText: "Choco 1", description: "Con galletitas oreo"},
+    { id: 22, title:"Manía Dulce Tentación",    price: 500, image: "images/ch2.jpg", altText: "Choco 2", description: "Relleno de dulce de leche"},
+    { id: 23, title:"Manía de Almendras",       price: 500, image: "images/ch2.jpg", altText: "Choco 3", description: "Almendras tostadas"},
+    { id: 24, title:"Marroc Manía",             price: 500, image: "images/ch2.jpg", altText: "Choco 4", description: "Corazón de marroc"},
+    { id: 25, title:"Manía Pura",               price: 500, image: "images/ch2.jpg", altText: "Choco 5", description: "Chocolate con leche"}
+]
+
+const productsBlanco = [
+    { id: 31, title:"Manía de Almendras",       price: 500, image: "images/ch3.jpg", altText: "Choco 1", description: "Almendras tostadas"},
+    { id: 32, title:"Oreo Manía",               price: 500, image: "images/ch3.jpg", altText: "Choco 2", description: "Con galletitas oreo"},
+    { id: 33, title:"Manía Dulce Tentación",    price: 500, image: "images/ch3.jpg", altText: "Choco 3", description: "Relleno de dulce de leche"},
+    { id: 34, title:"Chocolina Manía",          price: 500, image: "images/ch3.jpg", altText: "Choco 4", description: "Con galletitas chocolinas"},
+    { id: 35, title:"Manía Pura",               price: 500, image: "images/ch3.jpg", altText: "Choco 5", description: "Chocolate blanco"}
 ]
 
 // INVENTARIO DE PRODUCTOS - FIN
@@ -14,20 +28,27 @@ const products = [
 
 
 // TRAIGO INVENTARIO AL HTML
-products.forEach(product => $("#dynamicTienda").append(`
-    <div class="col-lg-4 col-md-6 col-sm-12 clase-image-container">
-        <img src="${product.image}" alt="${product.altText}" class="shadow p-3 bg-white rounded clase-image">
-        <div class="layer-top">
-            <div class="layer-text">
-                <h2>${product.title}</h2>
-                <p class="clases-text-responsive">${product.description}</p>
-                <p class="clases-text-responsive"><img src="images/precio.png" alt="Precio"> ${product.price}</p> 
-                <button type="button" value="${product.id}" class="btn addToCartButton">Agregar al Carrito</button>
+productsAmargo.forEach(product => $("#dynamicTiendaAmargo").append(`
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="diamond-container">
+            <div class="diamond">
+                 <div class="diamond-wrapper">
+                     <div class="diamond-content">$ ${product.price}</div>
+                 </div>
             </div>
-        </div>
+        </div>    
+        <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
+        <div>
+            <div class="prod-title p-3">${product.title}</div>
+            <div class="prod-description">    
+                <div>${product.description}</div>
+                <div class= "cart-section"><span><input class="quantity" type="number" value="1" min="1"></span><button type="button" value="${product.id}" class="btn"><img src="../images/addToCart.png"></img></button></div>
+            </div>
+            </div>
     </div>
-    `))
-
+    `)    
+   )
+   
 //Mismo bloque que arriba, pero sin jQuery
 
 // let container = document.querySelector("#dynamicTienda")
@@ -47,6 +68,49 @@ products.forEach(product => $("#dynamicTienda").append(`
 
 // container.appendChild(productsContainer)
 // }
+
+productsLeche.forEach(product => $("#dynamicTiendaLeche").append(`
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="diamond-container">
+            <div class="diamond">
+                 <div class="diamond-wrapper">
+                     <div class="diamond-content">$ ${product.price}</div>
+                 </div>
+            </div>
+        </div>    
+        <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
+        <div>
+            <div class="prod-title p-3">${product.title}</div>
+            <div class="prod-description">    
+                <div>${product.description}</div>
+                <div class= "cart-section"><span><input class="quantity" type="number" value="1" min="1"></span><button type="button" value="${product.id}" class="btn"><img src="../images/addToCart.png"></img></button></div>
+            </div>
+            </div>
+    </div>
+    `)    
+   )
+
+   productsBlanco.forEach(product => $("#dynamicTiendaBlanco").append(`
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="diamond-container">
+            <div class="diamond">
+                 <div class="diamond-wrapper">
+                     <div class="diamond-content">$ ${product.price}</div>
+                 </div>
+            </div>
+        </div>    
+        <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
+        <div>
+            <div class="prod-title p-3">${product.title}</div>
+            <div class="prod-description">    
+                <div>${product.description}</div>
+                <div class= "cart-section"><span><input class="quantity" type="number" value="1" min="1"></span><button type="button" value="${product.id}" class="btn"><img src="../images/addToCart.png"></img></button></div>
+            </div>
+            </div>
+    </div>
+    `)    
+   )
+
 
 // FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - INICIO
 const cart = []
