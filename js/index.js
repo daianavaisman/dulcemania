@@ -3,7 +3,7 @@
 const productsAmargo = [
     { id: 10, title:"Degustación Manía",        price: 550, image: "images/ch1.jpg", altText: "Choco 1", description: "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"},
     { id: 11, title:"Manía de la Montaña",      price: 500, image: "images/ch1.jpg", altText: "Choco 2", description: "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"},
-    { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con deliciosas almendras tostadas"},
+    { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con almendras tostadas"},
     { id: 13, title:"Manía Pura",               price: 550, image: "images/ch1.jpg", altText: "Choco 4", description: "Increible tableta de chocolate amargo puro con 80% de cacao"}
 ]
 
