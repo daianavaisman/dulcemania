@@ -1,0 +1,81 @@
+// Header and Banner
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: $white;
+  opacity: 0.95;
+  z-index: 5;
+}
+
+.logo {
+  max-width: 40%;
+  margin-left: 20px;
+}
+
+.navbar-nav {
+  a {
+    margin-right: 50px;
+    color: $dark-grey;
+    font-weight: bold;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:hover {
+      color: $very-dark-grey;
+      font-weight: bolder;
+    }
+  }
+}
+
+.nav-shadow {
+  box-shadow: 0 2px 4px 0 $shadow;
+}
+
+.nav-bar-end {
+  justify-content: flex-end;
+}
+
+// Mobile Styles
+
+@media only screen and (max-width: 414px) {
+  .header {
+    position: relative;
+  }
+
+  .nav-display {
+    display: block;
+  }
+
+  .logo {
+    max-width: 40%;
+  }
+
+  .nav-bar-items-responsive {
+    text-align: right;
+  }
+
+  .nav-bar-lastitem-responsive {
+    margin-right: 1rem !important;
+  }
+}
+
+//* Tablet Styles */
+@media only screen and (min-width: 415px) and (max-width: 960px) {
+  .margin-mq {
+    margin-top: 70px;
+  }
+
+  .logo {
+    max-width: 40%;
+  }
+
+  .nav-bar-items-responsive {
+    text-align: right;
+  }
+
+  .nav-bar-lastitem-responsive {
+    margin-right: 1rem !important;
+  }
+}

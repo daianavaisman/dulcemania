@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "image": "image/ch1.jpg",
+        "title": "Tremendo Choco",
+        "price": 500,
+        "altText": "Choco 1",
+        "description": "Centro y cobertura de pura felicidad."
+    }, 
+    {
+        "id": 2,
+        "image": "image/ch2.jpg",
+        "title": "Bomba de Amor",
+        "price": 525,
+        "altText": "Choco 2",
+        "description": "Una explosión de sabores, sabelo."
+    }, 
+    {
+        "id": 3,
+        "image": "image/ch3.jpg",
+        "title": "Una Fiesta",
+        "price": 550,
+        "altText": "Choco 3",
+        "description": "No podés creer que algo así exista."
+    }, 
+    {
+        "id": 4,
+        "image": "image/ch4.jpg",
+        "title": "Festival de Sabores",
+        "price": 500,
+        "altText": "Choco 4",
+        "description": "Te vas a querer casar con este choco."
+    }, 
+    {
+        "id": 5,
+        "image": "image/ch5.jpg",
+        "title": "Esto es Fatal",
+        "price": 525,
+        "altText": "Choco 5",
+        "description": "Todo lo que está bien (y mal)..."
+    }, 
+    {
+        "id": 6,
+        "image": "image/ch6.jpg",
+        "title": "El Choco de tu Vida",
+        "price": 550,
+        "altText": "Choco 6",
+        "description": "No existe otro como este, he dicho!"
+    }
+]
