@@ -50,6 +50,33 @@
   position: relative;
 }
 
+.cart-products {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background-color: #fff;
+  width: 300px;
+  max-height: 400px;
+  height: 0;
+  overflow: scroll;
+}
+
+.cart-products.active {
+  height: auto;
+}
+
+.cart-product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #343a41;
+}
+
+.cart-product.empty {
+  justify-content: center;
+}
+
 @media only screen and (max-width: 414px) {
   .header {
     position: relative;

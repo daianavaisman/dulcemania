@@ -97,23 +97,57 @@ function addToCart(e) {
         return;
     }
     cart.push(productToCart);
+    console.log(cart)
     saveToLocalStorage("cart", cart)
+    // refreshCartView()
 }
 
 
 $(".addToCartButton").each(function() {
     $(this).click(addToCart)
 })
-console.log(cart)
+
 
 //Lo mismo que arriba, pero en JS
 // const cartButton = document.querySelectorAll(".addToCartButton");
 // cartButton.forEach(button => button.addEventListener("click", addToCart)) //la función está definida arriba
 
-
 // FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - FIN
 
 
-// MOSTRAR CARRITO
-// function openCloseCart() {
-//   }
+//ARMAR CARRITO
+let productsInCart = JSON.parse(localStorage.getItem('cart'));
+if (!productsInCart) {
+    $(".cart-products").append(`
+        <div class="cart-product empty">
+            <p>Carrito vacio.</p>
+        </div>
+    `)
+}
+else {
+    productsInCart.forEach(productInCart => $(".cart-products").append(`
+        <div>    
+            <p>${productInCart.title}</p>
+            <p>$${productInCart.price}</p>
+            <button type="button" class="remove-item"><img src="images/trash.png"></button>
+        </div>
+    `))
+}
+
+
+// MOSTRAR / OCULTAR CARRITO
+function openCloseCart() {
+    const containerCart = document.querySelectorAll(".cart-products")[0];
+
+  containerCart.classList.forEach(item => {
+    if (item === "hidden") {
+      containerCart.classList.remove("hidden");
+      containerCart.classList.add("active");
+    }
+
+    if (item === "active") {
+      containerCart.classList.remove("active");
+      containerCart.classList.add("hidden");
+    }
+  });
+  }
