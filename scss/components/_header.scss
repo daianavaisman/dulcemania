@@ -19,9 +19,6 @@
     margin-right: 50px;
     color: $dark-grey;
     font-weight: bold;
-    &:last-of-type {
-      margin-right: 0;
-    }
     &:hover {
       color: $very-dark-grey;
       font-weight: bolder;

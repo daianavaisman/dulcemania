@@ -21,9 +21,6 @@
   color: #464e51;
   font-weight: bold;
 }
-.navbar-nav a:last-of-type {
-  margin-right: 0;
-}
 .navbar-nav a:hover {
   color: #1c2020;
   font-weight: bolder;
