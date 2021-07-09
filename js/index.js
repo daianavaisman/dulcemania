@@ -22,7 +22,7 @@ const products = [
 
 
 // TRAIGO INVENTARIO AL HTML
-products.forEach(product => $("#dynamicTiendaAmargo").append(`
+products.forEach(product => $("#dynamicTienda").append(`
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="diamond-container">
             <div class="diamond">
@@ -37,15 +37,12 @@ products.forEach(product => $("#dynamicTiendaAmargo").append(`
             <div class="prod-description">    
                 <div>${product.description}</div>
                 <div class= "cart-section">
-                    <span>
-                        <input class="quantity" type="number" value="1" min="1">
-                    </span>
                     <button type="button" value="${product.id}" class="btn addToCartButton">
                         <img src="images/addToCart.png"></img>
                     </button>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
     `)    
    )
@@ -55,17 +52,29 @@ products.forEach(product => $("#dynamicTiendaAmargo").append(`
 // let container = document.querySelector("#dynamicTienda")
 // for (const product of products) {
 // let productsContainer = document.createElement("div");
-// productsContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12", "clase-image-container")
+// productsContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12")
 // productsContainer.innerHTML =  
-// `<img src="${product.image}" alt="${product.altText}" class="shadow p-3 bg-white rounded clase-image">
-//  <div class="layer-top">
-//     <div class="layer-text">
-//         <h2>${product.title}</h2>
-//         <p class="clases-text-responsive">${product.description}</p>
-//         <p class="clases-text-responsive"><img src="images/precio.png" alt="Precio"> ${product.price}</p> 
-//         <button type="button" value="${product.id}" class="btn addToCartButton">${product.buttonText}</button>
+// `
+// <div class="diamond-container">
+//     <div class="diamond">
+//         <div class="diamond-wrapper">
+//             <div class="diamond-content">$ ${product.price}</div>
+//         </div>
 //     </div>
-//  </div>`
+// </div>    
+// <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
+// <div>
+//     <div class="prod-title p-3">${product.title}</div>
+//     <div class="prod-description">    
+//         <div>${product.description}</div>
+//         <div class= "cart-section">
+//             <button type="button" value="${product.id}" class="btn addToCartButton">
+//                 <img src="images/addToCart.png"></img>
+//             </button>
+//         </div>
+//     </div>
+// </div>
+// </div>`
 
 // container.appendChild(productsContainer)
 // }
@@ -75,16 +84,13 @@ products.forEach(product => $("#dynamicTiendaAmargo").append(`
 const cart = []
 
 function addToCart(e) {
+    const targetValue = (e.target.closest("button").value) 
+    
     //.find() es un método de los arrays que te devuelve el elemento que coincida con la búsqueda. 
     //en este caso busco que me traiga el product.id que coincida con el value del botón
-    const targetValue = (e.target.closest("button").value) 
-    // const targetValueQuantity = (e.target.closest("input").value) 
-
     const productToCart = products.find(product => product.id === parseInt(targetValue));
     console.log(productToCart);
 
-    // const productToCartQuantity = products.find(product => product.id === parseInt(targetValueQuantity));
-    // console.log(productToCartQuantity)
 
     if(!productToCart) {
         console.log('hmm no consigo el producto');
@@ -106,3 +112,8 @@ console.log(cart)
 
 
 // FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - FIN
+
+
+// MOSTRAR CARRITO
+// function openCloseCart() {
+//   }
