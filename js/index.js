@@ -99,7 +99,7 @@ function addToCart(e) {
     cart.push(productToCart);
     console.log(cart)
     saveToLocalStorage("cart", cart)
-    // refreshCartView()
+    refreshCartView()
 }
 
 
@@ -116,24 +116,25 @@ $(".addToCartButton").each(function() {
 
 
 //ARMAR CARRITO
-let productsInCart = JSON.parse(localStorage.getItem('cart'));
-if (!productsInCart) {
-    $(".cart-products").append(`
-        <div class="cart-product empty">
-            <p>Carrito vacio.</p>
-        </div>
-    `)
+function refreshCartView() {
+    let productsInCart = JSON.parse(localStorage.getItem('cart'));
+    if (!productsInCart) {
+        $(".cart-products").append(`
+            <div class="cart-product empty">
+                <p>Carrito vacio.</p>
+            </div>
+        `)
+    }
+    else {
+        productsInCart.forEach(productInCart => $(".cart-products").append(`
+            <div>    
+                <p>${productInCart.title}</p>
+                <p>$${productInCart.price}</p>
+                <button type="button" class="remove-item"><img src="images/trash.png"></button>
+            </div>
+        `))
+    }
 }
-else {
-    productsInCart.forEach(productInCart => $(".cart-products").append(`
-        <div>    
-            <p>${productInCart.title}</p>
-            <p>$${productInCart.price}</p>
-            <button type="button" class="remove-item"><img src="images/trash.png"></button>
-        </div>
-    `))
-}
-
 
 // MOSTRAR / OCULTAR CARRITO
 function openCloseCart() {
@@ -151,3 +152,5 @@ function openCloseCart() {
     }
   });
   }
+
+  refreshCartView()
