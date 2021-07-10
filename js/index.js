@@ -1,83 +1,67 @@
 // INVENTARIO DE PRODUCTOS - INICIO
 
-const products = [
-    { id: 10, title:"Degustación Manía",        price: 550, image: "images/ch1.jpg", altText: "Choco 1", description: "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"},
-    { id: 11, title:"Manía de la Montaña",      price: 500, image: "images/ch1.jpg", altText: "Choco 2", description: "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"},
-    { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con almendras tostadas"},
-    { id: 13, title:"Manía Pura",               price: 550, image: "images/ch1.jpg", altText: "Choco 4", description: "Increible tableta de chocolate amargo puro con 80% de cacao"},
-    { id: 21, title:"Oreo Manía",               price: 500, image: "images/ch2.jpg", altText: "Choco 1", description: "Con galletitas oreo"},
-    { id: 22, title:"Manía Dulce Tentación",    price: 500, image: "images/ch2.jpg", altText: "Choco 2", description: "Relleno de dulce de leche"},
-    { id: 23, title:"Manía de Almendras",       price: 500, image: "images/ch2.jpg", altText: "Choco 3", description: "Almendras tostadas"},
-    { id: 24, title:"Marroc Manía",             price: 500, image: "images/ch2.jpg", altText: "Choco 4", description: "Corazón de marroc"},
-    { id: 25, title:"Manía Pura",               price: 500, image: "images/ch2.jpg", altText: "Choco 5", description: "Chocolate con leche"},
-    { id: 31, title:"Manía de Almendras",       price: 500, image: "images/ch3.jpg", altText: "Choco 1", description: "Almendras tostadas"},
-    { id: 32, title:"Oreo Manía",               price: 500, image: "images/ch3.jpg", altText: "Choco 2", description: "Con galletitas oreo"},
-    { id: 33, title:"Manía Dulce Tentación",    price: 500, image: "images/ch3.jpg", altText: "Choco 3", description: "Relleno de dulce de leche"},
-    { id: 34, title:"Chocolina Manía",          price: 500, image: "images/ch3.jpg", altText: "Choco 4", description: "Con galletitas chocolinas"},
-    { id: 35, title:"Manía Pura",               price: 500, image: "images/ch3.jpg", altText: "Choco 5", description: "Chocolate blanco"}
-]
+// const products = [
+//     { id: 10, title:"Degustación Manía",        price: 550, image: "images/ch1.jpg", altText: "Choco 1", description: "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"},
+//     { id: 11, title:"Manía de la Montaña",      price: 500, image: "images/ch1.jpg", altText: "Choco 2", description: "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"},
+//     { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con almendras tostadas"},
+//     { id: 13, title:"Manía Pura",               price: 550, image: "images/ch1.jpg", altText: "Choco 4", description: "Increible tableta de chocolate amargo puro con 80% de cacao"},
+//     { id: 21, title:"Oreo Manía",               price: 500, image: "images/ch2.jpg", altText: "Choco 1", description: "Con galletitas oreo"},
+//     { id: 22, title:"Manía Dulce Tentación",    price: 500, image: "images/ch2.jpg", altText: "Choco 2", description: "Relleno de dulce de leche"},
+//     { id: 23, title:"Manía de Almendras",       price: 500, image: "images/ch2.jpg", altText: "Choco 3", description: "Almendras tostadas"},
+//     { id: 24, title:"Marroc Manía",             price: 500, image: "images/ch2.jpg", altText: "Choco 4", description: "Corazón de marroc"},
+//     { id: 25, title:"Manía Pura",               price: 500, image: "images/ch2.jpg", altText: "Choco 5", description: "Chocolate con leche"},
+//     { id: 31, title:"Manía de Almendras",       price: 500, image: "images/ch3.jpg", altText: "Choco 1", description: "Almendras tostadas"},
+//     { id: 32, title:"Oreo Manía",               price: 500, image: "images/ch3.jpg", altText: "Choco 2", description: "Con galletitas oreo"},
+//     { id: 33, title:"Manía Dulce Tentación",    price: 500, image: "images/ch3.jpg", altText: "Choco 3", description: "Relleno de dulce de leche"},
+//     { id: 34, title:"Chocolina Manía",          price: 500, image: "images/ch3.jpg", altText: "Choco 4", description: "Con galletitas chocolinas"},
+//     { id: 35, title:"Manía Pura",               price: 500, image: "images/ch3.jpg", altText: "Choco 5", description: "Chocolate blanco"}
+// ]
+let products = []
+$.ajax(
+    {
+        url: "productos.json",
+        method: "GET",
+        dataType: "json",
+        success: function(data, status, jqXHR){
+            renderProducts(data)
+            products = data
+        },
+        error: function(jqXHR, data, status){}
+    }
+)
 
 // INVENTARIO DE PRODUCTOS - FIN
 
 
 
 // TRAIGO INVENTARIO AL HTML
-products.forEach(product => $("#dynamicTienda").append(`
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="diamond-container">
-            <div class="diamond">
-                 <div class="diamond-wrapper">
-                     <div class="diamond-content">$ ${product.price}</div>
-                 </div>
-            </div>
-        </div>    
-        <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
-        <div>
-            <div class="prod-title p-3">${product.title}</div>
-            <div class="prod-description">    
-                <div>${product.description}</div>
-                <div class= "cart-section">
-                    <button type="button" value="${product.id}" class="btn addToCartButton">
-                        <img src="images/addToCart.png"></img>
-                    </button>
+
+function renderProducts(products) {
+    products.forEach(product => $("#dynamicTienda").append(`
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="diamond-container">
+                <div class="diamond">
+                    <div class="diamond-wrapper">
+                        <div class="diamond-content">$ ${product.price}</div>
+                    </div>
+                </div>
+            </div>    
+            <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
+            <div>
+                <div class="prod-title p-3">${product.title}</div>
+                <div class="prod-description">    
+                    <div>${product.description}</div>
+                    <div class= "cart-section">
+                        <button type="button" value="${product.id}" class="btn addToCartButton">
+                            <img src="images/addToCart.png"></img>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    `)    
-   )
-   
-//Mismo bloque que arriba, pero sin jQuery
-
-// let container = document.querySelector("#dynamicTienda")
-// for (const product of products) {
-// let productsContainer = document.createElement("div");
-// productsContainer.classList.add("col-lg-4", "col-md-6", "col-sm-12")
-// productsContainer.innerHTML =  
-// `
-// <div class="diamond-container">
-//     <div class="diamond">
-//         <div class="diamond-wrapper">
-//             <div class="diamond-content">$ ${product.price}</div>
-//         </div>
-//     </div>
-// </div>    
-// <img src="${product.image}" alt="${product.altText}" class="shadow p-3 mb-1 bg-body rounded w100">
-// <div>
-//     <div class="prod-title p-3">${product.title}</div>
-//     <div class="prod-description">    
-//         <div>${product.description}</div>
-//         <div class= "cart-section">
-//             <button type="button" value="${product.id}" class="btn addToCartButton">
-//                 <img src="images/addToCart.png"></img>
-//             </button>
-//         </div>
-//     </div>
-// </div>
-// </div>`
-
-// container.appendChild(productsContainer)
-// }
+        `)    
+    )
+}  
 
 
 // FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - INICIO
@@ -151,6 +135,6 @@ function openCloseCart() {
       containerCart.classList.add("hidden");
     }
   });
-  }
+}
 
   refreshCartView()
