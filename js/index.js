@@ -23,12 +23,13 @@ $.ajax(
         method: "GET",
         dataType: "json",
         success: function(data, status, jqXHR){
+            products = [...data]
             renderProducts(data)
-            products = data
         },
         error: function(jqXHR, data, status){}
     }
 )
+console.log(products)
 
 // INVENTARIO DE PRODUCTOS - FIN
 
@@ -61,6 +62,7 @@ function renderProducts(products) {
         </div>
         `)    
     )
+eventAddToCartButton()    
 }  
 
 
@@ -86,11 +88,11 @@ function addToCart(e) {
     refreshCartView()
 }
 
-
-$(".addToCartButton").each(function() {
-    $(this).click(addToCart)
-})
-
+function eventAddToCartButton() {
+    $(".addToCartButton").each(function() {
+        $(this).click(addToCart)
+    })
+}
 
 //Lo mismo que arriba, pero en JS
 // const cartButton = document.querySelectorAll(".addToCartButton");
@@ -110,6 +112,7 @@ function refreshCartView() {
         `)
     }
     else {
+        $(".cart-products").empty();
         productsInCart.forEach(productInCart => $(".cart-products").append(`
             <div>    
                 <p>${productInCart.title}</p>
@@ -126,13 +129,17 @@ function openCloseCart() {
 
   containerCart.classList.forEach(item => {
     if (item === "hidden") {
+      $(containerCart).fadeIn(600,function(){})  
       containerCart.classList.remove("hidden");
-      containerCart.classList.add("active");
+      containerCart.classList.add("active")
+    return;
     }
 
     if (item === "active") {
+      $(containerCart).fadeOut(600,function(){})
       containerCart.classList.remove("active");
       containerCart.classList.add("hidden");
+      return;
     }
   });
 }
