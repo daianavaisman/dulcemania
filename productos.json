@@ -5,7 +5,9 @@
         "price": 550, 
         "image": "images/ch1.jpg", 
         "altText": "Choco 1", 
-        "description": "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"
+        "description": "Almendras, cajú, avellanas, sal de montaña y pimienta rosa",
+        "category": "Chocolate Amargo",
+        "quantity": 1
     },
     { 
         "id": 11, 
@@ -13,7 +15,9 @@
         "price": 500, 
         "image": "images/ch1.jpg", 
         "altText": "Choco 2", 
-        "description": "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"
+        "description": "Chocolate amargo con 80% cacao y sal del Himalaya gruesa",
+        "category": "Chocolate Amargo",
+        "quantity": 1
     },
     { 
         "id": 12, 
@@ -21,7 +25,9 @@
         "price": 500, 
         "image": "images/ch1.jpg", 
         "altText": "Choco 3", 
-        "description": "Chocolate amargo con 80% cacao con almendras tostadas"
+        "description": "Chocolate amargo con 80% cacao con almendras tostadas",
+        "category": "Chocolate Amargo",
+        "quantity": 1
     },
     { 
         "id": 13, 
@@ -29,7 +35,9 @@
         "price": 550, 
         "image": "images/ch1.jpg", 
         "altText": "Choco 4", 
-        "description": "Increible tableta de chocolate amargo puro con 80% de cacao"
+        "description": "Increible tableta de chocolate amargo puro con 80% de cacao",
+        "category": "Chocolate Amargo",
+        "quantity": 1
     },
     { 
         "id": 21, 
@@ -37,7 +45,9 @@
         "price": 500, 
         "image": "images/ch2.jpg", 
         "altText": "Choco 1", 
-        "description": "Con galletitas oreo"
+        "description": "Con galletitas oreo",
+        "category": "Chocolate con Leche",
+        "quantity": 1
     },
     { 
         "id": 22, 
@@ -45,7 +55,9 @@
         "price": 500, 
         "image": "images/ch2.jpg", 
         "altText": "Choco 2", 
-        "description": "Relleno de dulce de leche"
+        "description": "Relleno de dulce de leche",
+        "category": "Chocolate con Leche",
+        "quantity": 1
     },
     { 
         "id": 23, 
@@ -53,7 +65,9 @@
         "price": 500, 
         "image": "images/ch2.jpg", 
         "altText": "Choco 3", 
-        "description": "Almendras tostadas"
+        "description": "Almendras tostadas",
+        "category": "Chocolate con Leche",
+        "quantity": 1
     },
     { 
         "id": 24, 
@@ -61,7 +75,9 @@
         "price": 500, 
         "image": "images/ch2.jpg", 
         "altText": "Choco 4", 
-        "description": "Corazón de marroc"
+        "description": "Corazón de marroc",
+        "category": "Chocolate con Leche",
+        "quantity": 1
     },
     { 
         "id": 25, 
@@ -69,7 +85,9 @@
         "price": 500, 
         "image": "images/ch2.jpg", 
         "altText": "Choco 5", 
-        "description": "Chocolate con leche"
+        "description": "Chocolate con leche",
+        "category": "Chocolate con Leche",
+        "quantity": 1
     },
     { 
         "id": 31, 
@@ -77,7 +95,9 @@
         "price": 500, 
         "image": "images/ch3.jpg", 
         "altText": "Choco 1", 
-        "description": "Almendras tostadas"
+        "description": "Almendras tostadas",
+        "category": "Chocolate Blanco",
+        "quantity": 1
     },
     { 
         "id": 32, 
@@ -85,7 +105,9 @@
         "price": 500, 
         "image": "images/ch3.jpg", 
         "altText": "Choco 2", 
-        "description": "Con galletitas oreo"
+        "description": "Con galletitas oreo",
+        "category": "Chocolate Blanco",
+        "quantity": 1
     },
     { 
         "id": 33, 
@@ -93,7 +115,9 @@
         "price": 500, 
         "image": "images/ch3.jpg", 
         "altText": "Choco 3", 
-        "description": "Relleno de dulce de leche"
+        "description": "Relleno de dulce de leche",
+        "category": "Chocolate Blanco",
+        "quantity": 1
     },
     { 
         "id": 34, 
@@ -101,7 +125,9 @@
         "price": 500, 
         "image": "images/ch3.jpg", 
         "altText": "Choco 4", 
-        "description": "Con galletitas chocolinas"
+        "description": "Con galletitas chocolinas",
+        "category": "Chocolate Blanco",
+        "quantity": 1
     },
     { 
         "id": 35, 
@@ -109,6 +135,8 @@
         "price": 500, 
         "image": "images/ch3.jpg", 
         "altText": "Choco 5", 
-        "description": "Chocolate blanco"
+        "description": "Chocolate blanco",
+        "category": "Chocolate Blanco",
+        "quantity": 1
     }
 ]

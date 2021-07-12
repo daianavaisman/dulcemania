@@ -1,21 +1,4 @@
 // INVENTARIO DE PRODUCTOS - INICIO
-
-// const products = [
-//     { id: 10, title:"Degustación Manía",        price: 550, image: "images/ch1.jpg", altText: "Choco 1", description: "Almendras, cajú, avellanas, sal de montaña y pimienta rosa"},
-//     { id: 11, title:"Manía de la Montaña",      price: 500, image: "images/ch1.jpg", altText: "Choco 2", description: "Chocolate amargo con 80% cacao y sal del Himalaya gruesa"},
-//     { id: 12, title:"Manía de Almendras",       price: 500, image: "images/ch1.jpg", altText: "Choco 3", description: "Chocolate amargo con 80% cacao con almendras tostadas"},
-//     { id: 13, title:"Manía Pura",               price: 550, image: "images/ch1.jpg", altText: "Choco 4", description: "Increible tableta de chocolate amargo puro con 80% de cacao"},
-//     { id: 21, title:"Oreo Manía",               price: 500, image: "images/ch2.jpg", altText: "Choco 1", description: "Con galletitas oreo"},
-//     { id: 22, title:"Manía Dulce Tentación",    price: 500, image: "images/ch2.jpg", altText: "Choco 2", description: "Relleno de dulce de leche"},
-//     { id: 23, title:"Manía de Almendras",       price: 500, image: "images/ch2.jpg", altText: "Choco 3", description: "Almendras tostadas"},
-//     { id: 24, title:"Marroc Manía",             price: 500, image: "images/ch2.jpg", altText: "Choco 4", description: "Corazón de marroc"},
-//     { id: 25, title:"Manía Pura",               price: 500, image: "images/ch2.jpg", altText: "Choco 5", description: "Chocolate con leche"},
-//     { id: 31, title:"Manía de Almendras",       price: 500, image: "images/ch3.jpg", altText: "Choco 1", description: "Almendras tostadas"},
-//     { id: 32, title:"Oreo Manía",               price: 500, image: "images/ch3.jpg", altText: "Choco 2", description: "Con galletitas oreo"},
-//     { id: 33, title:"Manía Dulce Tentación",    price: 500, image: "images/ch3.jpg", altText: "Choco 3", description: "Relleno de dulce de leche"},
-//     { id: 34, title:"Chocolina Manía",          price: 500, image: "images/ch3.jpg", altText: "Choco 4", description: "Con galletitas chocolinas"},
-//     { id: 35, title:"Manía Pura",               price: 500, image: "images/ch3.jpg", altText: "Choco 5", description: "Chocolate blanco"}
-// ]
 let products = []
 $.ajax(
     {
@@ -30,13 +13,11 @@ $.ajax(
     }
 )
 console.log(products)
-
 // INVENTARIO DE PRODUCTOS - FIN
 
 
 
-// TRAIGO INVENTARIO AL HTML
-
+// TRAIGO INVENTARIO AL HTML - INICIO
 function renderProducts(products) {
     products.forEach(product => $("#dynamicTienda").append(`
         <div class="col-lg-3 col-md-6 col-sm-12">
@@ -64,9 +45,26 @@ function renderProducts(products) {
     )
 eventAddToCartButton()    
 }  
+// TRAIGO INVENTARIO AL HTML - FIN
 
 
-// FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - INICIO
+
+//FUNCIONES LOCAL STORAGE - INICIO
+function saveToLocalStorage(key,value) {
+    let stringifiedItem = JSON.stringify(value);
+    localStorage.setItem(key,stringifiedItem);
+}
+
+function getFromLocal(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+// function updateLocalStorage(){}
+//FUNCIONES LOCAL STORAGE - FIN
+
+
+
+//AGREGAR AL CARRITO - INICIO
 const cart = []
 
 function addToCart(e) {
@@ -93,37 +91,47 @@ function eventAddToCartButton() {
         $(this).click(addToCart)
     })
 }
-
-//Lo mismo que arriba, pero en JS
-// const cartButton = document.querySelectorAll(".addToCartButton");
-// cartButton.forEach(button => button.addEventListener("click", addToCart)) //la función está definida arriba
-
-// FUNCIONES Y EVENTOS PARA AGREGAR AL CARRITO - FIN
+//AGREGAR AL CARRITO - FIN
 
 
-//ARMAR CARRITO
+
+//ARMAR CARRITO - INICIO
 function refreshCartView() {
     let productsInCart = JSON.parse(localStorage.getItem('cart'));
     if (!productsInCart) {
         $(".cart-products").append(`
             <div class="cart-product empty">
-                <p>Carrito vacio.</p>
+                <p>Tu carrito está vacío.</p>
             </div>
         `)
     }
     else {
         $(".cart-products").empty();
         productsInCart.forEach(productInCart => $(".cart-products").append(`
-            <div>    
-                <p>${productInCart.title}</p>
-                <p>$${productInCart.price}</p>
-                <button type="button" class="remove-item"><img src="images/trash.png"></button>
+            <div class="cart-product">    
+                <img class="cart-image" src="${productInCart.image}" alt="${productInCart.category} - ${productInCart.title}">
+                <div class="cart-product-info"> 
+                    <span class="product-quantity">${productInCart.quantity}</span>
+                    <p class="product-name">${productInCart.title}</p>
+                    <p class="product-category">(${productInCart.category})</p>
+                    <p class="product-price">$${productInCart.price}</p>
+                    <p>
+                        <button class="change-quantity">-</button>
+                        <button class="change-quantity">+</button>
+                        <button type="button" class="remove-item">
+                            <img src="images/trash.png">
+                        </button>
+                    </p>
+                </div>
             </div>
         `))
     }
 }
+//ARMAR CARRITO - FIN
 
-// MOSTRAR / OCULTAR CARRITO
+
+
+// MOSTRAR / OCULTAR CARRITO - INICIO
 function openCloseCart() {
     const containerCart = document.querySelectorAll(".cart-products")[0];
 
@@ -143,5 +151,43 @@ function openCloseCart() {
     }
   });
 }
+// MOSTRAR / OCULTAR CARRITO - FIN
 
-  refreshCartView()
+
+
+// FUNCIONES DE CARRITO - INICIO
+refreshCartView() //Lo ejecuto para que me cargue el carrito al cargar la página
+
+//Quitar un elemento del carrito
+const removeCartItemButton = document.querySelectorAll(".remove-item");
+console.log(removeCartItemButton)
+
+for (let i = 0; i < removeCartItemButton.length; i++) {
+    button = removeCartItemButton[i]
+    button.addEventListener("click", function(e) {
+        e.target.parentElement.parentElement.parentElement.parentElement.remove()
+        // updateLocalStorage()
+    })
+}
+
+//Cantidad: Aumentar
+
+//Cantidad: Disminuir
+
+//Vaciar el carrito
+
+//Actualizar el total
+function updateCartTotal() {
+    const cartProduct = document.querySelectorAll(".cart-product");
+    for (let i = 0; i > cartProduct.length; i++) {
+        let product = cartProduct[i];
+        let productPrice = document.querySelectorAll(".product-price")[0]
+        let productQuantity = document.querySelectorAll(".product-quantity")
+    }
+}
+
+
+//Finalizar compra
+
+
+// FUNCIONES DE CARRITO - FIN
