@@ -8,13 +8,24 @@ $.ajax(
         success: function(data, status, jqXHR){
             products = [...data]
             renderProducts(data)
+            refreshCartView()
         },
         error: function(jqXHR, data, status){}
     }
 )
 console.log(products)
-// INVENTARIO DE PRODUCTOS - FIN
 
+
+
+//FUNCIONES LOCAL STORAGE 
+function saveToLocalStorage(key,value) {
+    let stringifiedItem = JSON.stringify(value);
+    localStorage.setItem(key,stringifiedItem);
+}
+
+function getFromLocal(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
 
 
 // TRAIGO INVENTARIO AL HTML - INICIO
@@ -45,89 +56,134 @@ function renderProducts(products) {
     )
 eventAddToCartButton()    
 }  
-// TRAIGO INVENTARIO AL HTML - FIN
 
 
 
-//FUNCIONES LOCAL STORAGE - INICIO
-function saveToLocalStorage(key,value) {
-    let stringifiedItem = JSON.stringify(value);
-    localStorage.setItem(key,stringifiedItem);
-}
 
-function getFromLocal(key) {
-    return JSON.parse(localStorage.getItem(key));
-}
-
-// function updateLocalStorage(){}
-//FUNCIONES LOCAL STORAGE - FIN
-
-
-
-//AGREGAR AL CARRITO - INICIO
-const cart = []
-
+//AGREGAR AL CARRITO 
 function addToCart(e) {
-    const targetValue = (e.target.closest("button").value) 
+    const productId = (e.target.closest("button").value) 
     
-    //.find() es un método de los arrays que te devuelve el elemento que coincida con la búsqueda. 
-    //en este caso busco que me traiga el product.id que coincida con el value del botón
-    const productToCart = products.find(product => product.id === parseInt(targetValue));
-    console.log(productToCart);
-
-
-    if(!productToCart) {
-        console.log('hmm no consigo el producto');
-        return;
+    let cart = getFromLocal('cart')
+    if (!cart) {
+        cart = {}
     }
-    cart.push(productToCart);
-    console.log(cart)
+    if (productId in cart) {
+        cart[productId] = cart[productId] + 1
+    } else {
+        cart[productId] = 1
+    }
+
     saveToLocalStorage("cart", cart)
+
     refreshCartView()
 }
 
+//DISMINUIR CANTIDAD Y BORRAR DEL CARRITO
+const deleteFromCart = productId => {
+    console.log("El id del producto a borrar: ",productId);
+
+    let cart = getFromLocal('cart')
+
+    if (productId in cart) {
+        cart[productId] = cart[productId] - 1
+    } else {
+        console.error('Producto no esta en el carrito')
+    }
+
+    if (cart[productId] === 0) {
+        delete cart[productId]
+    }
+
+    saveToLocalStorage("cart", cart)
+
+    refreshCartView()
+}
+
+//AGREGAR CANTIDAD
+function oneMore (productId) {
+    let cart = getFromLocal('cart')
+    cart[productId] = cart[productId] + 1
+    saveToLocalStorage("cart", cart)
+
+    refreshCartView()
+}
+
+//VACIAR CARRITO
+
+function clearCart () {
+    let cart = {}
+    saveToLocalStorage("cart", cart)
+
+    refreshCartView()
+}
+
+
+//TOTAL CARRITO
+function getCartTotal() {
+    return 500 //falta armar logica
+}
+
+
+//EVENT HANDLER BOTON DE AGREGAR AL CARRITO
 function eventAddToCartButton() {
     $(".addToCartButton").each(function() {
         $(this).click(addToCart)
     })
 }
-//AGREGAR AL CARRITO - FIN
 
 
-
-//ARMAR CARRITO - INICIO
+//ARMAR CARRITO 
 function refreshCartView() {
-    let productsInCart = JSON.parse(localStorage.getItem('cart'));
-    if (!productsInCart) {
+    let cart = getFromLocal('cart')
+    if (cart === null) {
+        cart = {}
+    }
+    let idsInCart = Object.keys(cart)
+
+    if (idsInCart.length === 0) {
         $(".cart-products").append(`
             <div class="cart-product empty">
                 <p>Tu carrito está vacío.</p>
             </div>
         `)
+        return;
     }
-    else {
-        $(".cart-products").empty();
-        productsInCart.forEach(productInCart => $(".cart-products").append(`
-            <div class="cart-product">    
-                <img class="cart-image" src="${productInCart.image}" alt="${productInCart.category} - ${productInCart.title}">
-                <div class="cart-product-info"> 
-                    <span class="product-quantity">${productInCart.quantity}</span>
-                    <p class="product-name">${productInCart.title}</p>
-                    <p class="product-category">(${productInCart.category})</p>
-                    <p class="product-price">$${productInCart.price}</p>
-                    <p>
-                        <button class="change-quantity">-</button>
-                        <button class="change-quantity">+</button>
-                        <button type="button" class="remove-item">
-                            <img src="images/trash.png">
-                        </button>
-                    </p>
-                </div>
+    $(".cart-products").empty();
+    const total = getCartTotal()
+
+    const uniqueProductsInCart = idsInCart.map(productId => products.find(product => product.id === Number(productId)))
+    // [{id:11, nombre...},{id:13, nombre...}]
+    console.log({
+        cart,
+        idsInCart,
+        uniqueProductsInCart,
+        products
+    })
+    uniqueProductsInCart.forEach(productInCart => $(".cart-products").append(`
+        <div class="cart-product">    
+            <img class="cart-image" src="${productInCart.image}" alt="${productInCart.category} - ${productInCart.title}">
+            <div class="cart-product-info"> 
+                <span class="product-quantity">${cart[productInCart.id]}</span>
+                <p class="product-name">${productInCart.title}</p>
+                <p class="product-category">(${productInCart.category})</p>
+                <p class="product-price">$${productInCart.price}</p>
+                <p>
+                    <button class="change-quantity" onclick="oneMore(${productInCart.id})">+</button>
+                    <button type="button" class="remove-item" onclick="deleteFromCart(${productInCart.id})">
+                        <img src="images/trash.png">
+                    </button>
+                </p>
             </div>
-        `))
-    }
+        </div>
+    `))
+    $(".cart-products").append(`
+    <button class="clear-cart" onclick="clearCart()">Borrar carrito</button>
+    <p> Total de compra: ${total} </p>
+    `)
 }
-//ARMAR CARRITO - FIN
+
+
 
 
 
@@ -151,43 +207,9 @@ function openCloseCart() {
     }
   });
 }
-// MOSTRAR / OCULTAR CARRITO - FIN
 
 
 
-// FUNCIONES DE CARRITO - INICIO
-refreshCartView() //Lo ejecuto para que me cargue el carrito al cargar la página
-
-//Quitar un elemento del carrito
-const removeCartItemButton = document.querySelectorAll(".remove-item");
-console.log(removeCartItemButton)
-
-for (let i = 0; i < removeCartItemButton.length; i++) {
-    button = removeCartItemButton[i]
-    button.addEventListener("click", function(e) {
-        e.target.parentElement.parentElement.parentElement.parentElement.remove()
-        // updateLocalStorage()
-    })
-}
-
-//Cantidad: Aumentar
-
-//Cantidad: Disminuir
-
-//Vaciar el carrito
-
-//Actualizar el total
-function updateCartTotal() {
-    const cartProduct = document.querySelectorAll(".cart-product");
-    for (let i = 0; i > cartProduct.length; i++) {
-        let product = cartProduct[i];
-        let productPrice = document.querySelectorAll(".product-price")[0]
-        let productQuantity = document.querySelectorAll(".product-quantity")
-    }
-}
+//Falta armar Finalizar compra
 
 
-//Finalizar compra
-
-
-// FUNCIONES DE CARRITO - FIN
