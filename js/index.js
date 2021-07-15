@@ -120,8 +120,11 @@ function clearCart () {
 
 
 //TOTAL CARRITO
-function getCartTotal() {
-    return 500 //falta armar logica
+function getCartTotal(purchasedProducts, cart) {
+    let total = 0
+    purchasedProducts.forEach(product => total += product.price * cart[product.id]) 
+        
+    return total;
 }
 
 
@@ -142,6 +145,7 @@ function refreshCartView() {
     let idsInCart = Object.keys(cart)
 
     if (idsInCart.length === 0) {
+        $(".cart-products").empty(); 
         $(".cart-products").append(`
             <div class="cart-product empty">
                 <p>Tu carrito está vacío.</p>
@@ -150,10 +154,11 @@ function refreshCartView() {
         return;
     }
     $(".cart-products").empty();
-    const total = getCartTotal()
-
+    
     const uniqueProductsInCart = idsInCart.map(productId => products.find(product => product.id === Number(productId)))
     // [{id:11, nombre...},{id:13, nombre...}]
+    const total = getCartTotal(uniqueProductsInCart, cart)
+
     console.log({
         cart,
         idsInCart,
