@@ -37,6 +37,8 @@
 
 .cart-product.empty {
   justify-content: center;
+  font-weight: bold;
+  margin: 10px;
 }
 
 .prod-title {
@@ -123,6 +125,31 @@
   font-weight: bolder;
   background-color: $white;
   color: #000;
+}
+
+.bottom-cart {
+  text-align: center;
+  margin: 10px;
+}
+
+.total-cart {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.cart-button {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid $primary-brown;
+  background-color: $white;
+  color: $primary-brown;
+  border-radius: 8px;
+}
+
+.cart-button:hover {
+  background-color: $primary-brown;
+  color: $white;
 }
 
 @media only screen and (max-width: 414px) {

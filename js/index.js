@@ -119,6 +119,31 @@ function clearCart () {
 }
 
 
+//FINALIZAR COMPRA
+function checkOut () {
+    let cart = {}
+    saveToLocalStorage("cart", cart)
+
+    $(".cart-products").empty(); 
+        $(".cart-products").append(`
+            <div class="cart-product empty">
+                <p>Gracias por tu Compra</p>
+            </div>
+            <div class="bottom-cart">
+                <button class="cart-button" onclick="newPurchase()">Nueva Compra</button>
+            </div>
+        `)
+        return;
+}
+
+
+//NUEVA COMPRA
+
+function newPurchase() {
+    refreshCartView()
+}
+
+
 //TOTAL CARRITO
 function getCartTotal(purchasedProducts, cart) {
     let total = 0
@@ -183,8 +208,11 @@ function refreshCartView() {
         </div>
     `))
     $(".cart-products").append(`
-    <button class="clear-cart" onclick="clearCart()">Borrar carrito</button>
-    <p> Total de compra: ${total} </p>
+    <div class="bottom-cart">
+        <p class="total-cart"> Total de compra: $${total} </p>
+        <button class="cart-button" onclick="clearCart()">Borrar Carrito</button>
+        <button class="cart-button" onclick="checkOut()">Finalizar Compra</button>
+    </div>
     `)
 }
 

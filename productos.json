@@ -3,140 +3,126 @@
         "id": 10,
         "title":"Degustación Manía",
         "price": 550, 
-        "image": "images/ch1.jpg", 
-        "altText": "Choco 1", 
+        "image": "images/degu-amargo.jpg", 
+        "altText": "Chocolate amargo con Almendras, cajú, avellanas, sal de montaña y pimienta rosa", 
         "description": "Almendras, cajú, avellanas, sal de montaña y pimienta rosa",
-        "category": "Chocolate Amargo",
-        "quantity": 1
+        "category": "Chocolate Amargo"
     },
     { 
         "id": 11, 
         "title":"Manía de la Montaña",
         "price": 500, 
-        "image": "images/ch1.jpg", 
-        "altText": "Choco 2", 
+        "image": "images/amargo-sal.jpg", 
+        "altText": "Chocolate amargo con 80% cacao y sal del Himalaya gruesa", 
         "description": "Chocolate amargo con 80% cacao y sal del Himalaya gruesa",
-        "category": "Chocolate Amargo",
-        "quantity": 1
+        "category": "Chocolate Amargo"
     },
     { 
         "id": 12, 
         "title":"Manía de Almendras",
         "price": 500, 
-        "image": "images/ch1.jpg", 
-        "altText": "Choco 3", 
+        "image": "images/amargo-almendras.jpg", 
+        "altText": "Chocolate amargo con 80% cacao con almendras tostadas", 
         "description": "Chocolate amargo con 80% cacao con almendras tostadas",
-        "category": "Chocolate Amargo",
-        "quantity": 1
+        "category": "Chocolate Amargo"
     },
     { 
         "id": 13, 
         "title":"Manía Pura",
         "price": 550, 
-        "image": "images/ch1.jpg", 
-        "altText": "Choco 4", 
+        "image": "images/amargo-puro.jpg", 
+        "altText": "Chocolate amargo puro con 80% de cacao", 
         "description": "Increible tableta de chocolate amargo puro con 80% de cacao",
-        "category": "Chocolate Amargo",
-        "quantity": 1
+        "category": "Chocolate Amargo"
     },
     { 
         "id": 21, 
         "title":"Oreo Manía",
         "price": 500, 
         "image": "images/ch2.jpg", 
-        "altText": "Choco 1", 
+        "altText": "Chocolate con leche con galletitas oreo", 
         "description": "Con galletitas oreo",
-        "category": "Chocolate con Leche",
-        "quantity": 1
+        "category": "Chocolate con Leche"
     },
     { 
         "id": 22, 
         "title":"Manía Dulce Tentación",
         "price": 500, 
-        "image": "images/ch2.jpg", 
-        "altText": "Choco 2", 
+        "image": "images/leche-ddl.jpg", 
+        "altText": "Chocolate con leche relleno de dulce de leche", 
         "description": "Relleno de dulce de leche",
-        "category": "Chocolate con Leche",
-        "quantity": 1
+        "category": "Chocolate con Leche"
     },
     { 
         "id": 23, 
         "title":"Manía de Almendras",
         "price": 500, 
-        "image": "images/ch2.jpg", 
-        "altText": "Choco 3", 
+        "image": "images/leche-almendras.jpg", 
+        "altText": "Chocolate con leche con almendras tostadas", 
         "description": "Almendras tostadas",
-        "category": "Chocolate con Leche",
-        "quantity": 1
+        "category": "Chocolate con Leche"
     },
     { 
         "id": 24, 
         "title":"Marroc Manía",
         "price": 500, 
-        "image": "images/ch2.jpg", 
-        "altText": "Choco 4", 
+        "image": "images/leche-marroc.jpg", 
+        "altText": "Chocolate con leche relleno de marroc", 
         "description": "Corazón de marroc",
-        "category": "Chocolate con Leche",
-        "quantity": 1
+        "category": "Chocolate con Leche"
     },
     { 
         "id": 25, 
         "title":"Manía Pura",
         "price": 500, 
-        "image": "images/ch2.jpg", 
-        "altText": "Choco 5", 
+        "image": "images/leche-puro.jpg", 
+        "altText": "Chocolate con leche puro", 
         "description": "Chocolate con leche",
-        "category": "Chocolate con Leche",
-        "quantity": 1
+        "category": "Chocolate con Leche"
     },
     { 
         "id": 31, 
         "title":"Manía de Almendras",
         "price": 500, 
-        "image": "images/ch3.jpg", 
-        "altText": "Choco 1", 
+        "image": "images/blanco-almendras.jpg", 
+        "altText": "Chocolate blanco con almendras tostadas", 
         "description": "Almendras tostadas",
-        "category": "Chocolate Blanco",
-        "quantity": 1
+        "category": "Chocolate Blanco"
     },
     { 
         "id": 32, 
         "title":"Oreo Manía",
         "price": 500, 
-        "image": "images/ch3.jpg", 
-        "altText": "Choco 2", 
+        "image": "images/blanco-oreo.jpg", 
+        "altText": "Chocolate blanco con galletitas oreo", 
         "description": "Con galletitas oreo",
-        "category": "Chocolate Blanco",
-        "quantity": 1
+        "category": "Chocolate Blanco"
     },
     { 
         "id": 33, 
         "title":"Manía Dulce Tentación",
         "price": 500, 
-        "image": "images/ch3.jpg", 
-        "altText": "Choco 3", 
+        "image": "images/blanco-ddl.jpg", 
+        "altText": "Chocolate blanco relleno de dulce de leche", 
         "description": "Relleno de dulce de leche",
-        "category": "Chocolate Blanco",
-        "quantity": 1
+        "category": "Chocolate Blanco"
     },
     { 
         "id": 34, 
         "title":"Chocolina Manía",
         "price": 500, 
         "image": "images/ch3.jpg", 
-        "altText": "Choco 4", 
+        "altText": "Chocolate blanco con galletitas chocolinas", 
         "description": "Con galletitas chocolinas",
-        "category": "Chocolate Blanco",
-        "quantity": 1
+        "category": "Chocolate Blanco"
     },
     { 
         "id": 35, 
         "title":"Manía Pura",
         "price": 500, 
-        "image": "images/ch3.jpg", 
-        "altText": "Choco 5", 
+        "image": "images/blanco-puro.jpg", 
+        "altText": "Chocolate blanco puro", 
         "description": "Chocolate blanco",
-        "category": "Chocolate Blanco",
-        "quantity": 1
+        "category": "Chocolate Blanco"
     }
 ]
